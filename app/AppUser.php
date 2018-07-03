@@ -7,7 +7,7 @@ use App\Http\Controllers\AppointmentController;
 
 class AppUser extends Model
 {
-    protected $fillable = ['mobile_no','place','profile_img','panding_amount'];
+    protected $fillable = ['mobile_no','place','profile_img','pending_amount'];
 
     public function fun()
     {

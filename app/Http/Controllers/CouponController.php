@@ -15,7 +15,13 @@ class CouponController extends Controller
      */
     public function index()
     {
-        return Coupon::all();
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> Coupon::all()
+                         ]
+                         ,201);
     }
 
     /**
@@ -45,7 +51,13 @@ class CouponController extends Controller
         $Coupon->expire_date = $request->expire_date;
         $Coupon->issue_date = $request->issue_date;
         $Coupon->save();
-        return $Coupon;
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Coupon
+                         ]
+                         ,201);
     }
 
     /**
@@ -56,7 +68,13 @@ class CouponController extends Controller
      */
     public function show($id)
     {
-        return Coupon::find($id);
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> Coupon::find($id)
+                         ]
+                         ,201);
     }
 
     /**
@@ -81,7 +99,13 @@ class CouponController extends Controller
     {
          $Coupon = Coupon::find($id);
          $Coupon->update($request->all());
-         return $Coupon;
+         
+         return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Coupon
+                         ]
+                         ,201);
     }
 
     /**

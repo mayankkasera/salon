@@ -58,7 +58,6 @@ Route::post('checktime','ShopOffController@checkTime');
 
 Route::post('checkslot','SlotController@checkSlot');
 
-
 Route::post('user/register', 'APIRegisterController@register');
 
 Route::post('user/login', 'APILoginController@login');

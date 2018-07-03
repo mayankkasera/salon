@@ -18,7 +18,13 @@ class ShopOffController extends Controller
      */
     public function index()
     {
-        return ShopOff::all();
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> ShopOff::all()
+                         ]
+                         ,201);
     }
 
     /**
@@ -48,7 +54,13 @@ class ShopOffController extends Controller
         $ShopOff->start_date = $request->start_date;
         $ShopOff->end_date = $request->end_date;
         $ShopOff->save();
-        return $ShopOff;
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $ShopOff
+                         ]
+                         ,201);
     }
 
     /**
@@ -59,7 +71,14 @@ class ShopOffController extends Controller
      */
     public function show($id)
     {
-        return ShopOff::find($id);
+        
+
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> ShopOff::find($id)
+                         ]
+                         ,201);
     }
 
     /**
@@ -84,7 +103,14 @@ class ShopOffController extends Controller
     {
         $ShopOff = ShopOff::find($id);
         $ShopOff->update($request->all());
-        return $ShopOff;
+       
+
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $ShopOff
+                         ]
+                         ,201);
     }
 
     /**

@@ -15,7 +15,13 @@ class PackageController extends Controller
      */
     public function index()
     {
-        return Package::all();
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> Package::all()
+                         ]
+                         ,201);
     }
 
     /**
@@ -43,7 +49,13 @@ class PackageController extends Controller
         $Package->price = $request->price;
         $Package->img = $request->img;
         $Package->save();
-        return $Package;
+       
+         return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Package
+                         ]
+                         ,201);
     }
 
     /**
@@ -54,7 +66,13 @@ class PackageController extends Controller
      */
     public function show($id)
     {
-       return Package::find($id);
+       
+       return response(
+                         [
+                          'error'=> false,
+                          'data'=> Package::find($id)
+                         ]
+                         ,201);
     }
 
     /**
@@ -79,7 +97,13 @@ class PackageController extends Controller
     {
         $package = Package::find($id);
         $package->update($request->all());
-        return $package;
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $package
+                         ]
+                         ,201);
     }
 
     /**

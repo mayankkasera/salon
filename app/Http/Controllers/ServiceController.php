@@ -50,7 +50,13 @@ class ServiceController extends Controller
         $service->duration = $request->duration;
         $service->price = $request->price;
         $service->save();
-        return $service;
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $service
+                         ]
+                         ,201);
     }
 
     /**
@@ -61,7 +67,13 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        return Service::find($id);
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> Service::find($id)
+                         ]
+                         ,201);
     }
 
     /**
@@ -86,7 +98,13 @@ class ServiceController extends Controller
     {
         $service = Service::find($id);
         $service->update($request->all());
-        return $service;
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $service
+                         ]
+                         ,201);
     }
 
     /**

@@ -17,7 +17,13 @@ class SubscriptionController extends Controller
      */
     public function index()
     {
-       return Subscription::all();
+       
+       return response(
+                         [
+                          'error'=> false,
+                          'data'=> Subscription::all()
+                         ]
+                         ,201);
     }
 
     /**
@@ -45,7 +51,12 @@ class SubscriptionController extends Controller
          $Subscription->time = $request->time;
          $Subscription->payment_type = $request->payment_type;
          $Subscription->save();
-         return $Subscription;
+         return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Subscription
+                         ]
+                         ,201);
     }
 
     /**
@@ -56,7 +67,13 @@ class SubscriptionController extends Controller
      */
     public function show($id)
     {
-        return Subscription::find($id);
+      
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> Subscription::find($id)
+                         ]
+                         ,201);
     }
 
     /**
@@ -81,7 +98,13 @@ class SubscriptionController extends Controller
     {
         $Subscription = Subscription::find($id);
         $Subscription->update($request->all());
-        return $Subscription;
+       
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Subscription
+                         ]
+                         ,201);
     }
 
     /**
@@ -98,6 +121,12 @@ class SubscriptionController extends Controller
     public function userSubscripions($id)
     {
         $row = DB::table('subscriptions')->where('user_id','=',$id)->get();
-        return $row;
+       
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $row
+                         ]
+                         ,201);
     }
 }

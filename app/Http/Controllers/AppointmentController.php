@@ -15,7 +15,13 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        return Appointment::all();
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> Appointment::all()
+                         ]
+                         ,201);
     }
 
     /**
@@ -51,7 +57,13 @@ class AppointmentController extends Controller
         $Appointment->coupon_flag = $request->coupon_flag;
         $Appointment->coupon_id = $request->coupon_id;
         $Appointment->save();
-        return $Appointment;
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Appointment
+                         ]
+                         ,201);
     }
 
     /**
@@ -62,7 +74,13 @@ class AppointmentController extends Controller
      */
     public function show($id)
     {
-       return Appointment::find($id);
+       
+       return response(
+                         [
+                          'error'=> false,
+                          'data'=> Appointment::find($id)
+                         ]
+                         ,201);
     }
 
     /**
@@ -87,7 +105,13 @@ class AppointmentController extends Controller
     {
          $Appointment = Appointment::find($id);
          $Appointment->update($request->all());
-         return $Appointment;
+         
+         return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Appointment
+                         ]
+                         ,201);
     }
 
     /**

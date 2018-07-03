@@ -17,7 +17,13 @@ class SlotController extends Controller
      */
     public function index()
     {
-        return Slot::all();
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> Slot::all()
+                         ]
+                         ,201);
     }
 
     /**
@@ -43,7 +49,14 @@ class SlotController extends Controller
          $Slot->slot_no = $request->slot_no;
          $Slot->count = $request->count;
          $Slot->save(); 
-         return $Slot;
+         
+
+         return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Slot
+                         ]
+                         ,201);
     }
 
     /**
@@ -54,7 +67,13 @@ class SlotController extends Controller
      */
     public function show($id)
     {
-        return Slot::find($id);
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> Slot::find($id)
+                         ]
+                         ,201);
     }
 
     /**
@@ -78,7 +97,13 @@ class SlotController extends Controller
     {
         $slot = Slot::find($id);
         $slot->update($request->all());
-        return $slot;
+      
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $slot
+                         ]
+                         ,201);
     }
 
     /**

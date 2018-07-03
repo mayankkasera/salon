@@ -17,7 +17,13 @@ class AppUserController extends Controller
      */
     public function index()
     {
-        return AppUser::all();
+       
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> AppUser::all()
+                         ]
+                         ,201);
     }
 
     /**
@@ -43,7 +49,13 @@ class AppUserController extends Controller
         $AppUsers->place = $Request->place;
         $AppUsers->profile_img =  $Request->profile_img;  
         $AppUsers->save();
-        return $AppUsers;
+        
+         return response(
+                         [
+                          'error'=> false,
+                          'data'=> $AppUsers
+                         ]
+                         ,201);
     }
 
     /**
@@ -54,7 +66,13 @@ class AppUserController extends Controller
      */
     public function show($id)
     {
-        return AppUser::find($id);
+       
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> AppUser::find($id)
+                         ]
+                         ,201);
     }
 
     /**
@@ -79,7 +97,13 @@ class AppUserController extends Controller
     {
          $AppUser = AppUser::find($id);
          $AppUser->update($request->all());
-         return $AppUser;
+         
+         return response(
+                         [
+                          'error'=> false,
+                          'data'=> $AppUser
+                         ]
+                         ,201);
     }
 
     /**
@@ -96,13 +120,27 @@ class AppUserController extends Controller
     public function userAppointment($id)
     {
         $row = DB::table('appointments')->where('app_user_id','=',$id)->get();
-        return $row;
+        
+
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $row
+                         ]
+                         ,201);
     }
 
     public function userSubscripions($id)
     {
         $row = DB::table('subscriptions')->where('user_id','=',$id)->get();
-        return $row;
+        
+
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $row
+                         ]
+                         ,201);
     }
 
     public function userSubscriptionAppointment($id)
@@ -119,7 +157,13 @@ class AppUserController extends Controller
              }
         }
         
-        return $row;
+        
+       return response(
+                         [
+                          'error'=> false,
+                          'data'=> $row
+                         ]
+                         ,201);
     }
 
 

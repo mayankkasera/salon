@@ -15,7 +15,13 @@ class SubscriptionAppointmentController extends Controller
      */
     public function index()
     {
-        return SubscriptionAppointment::all();
+        
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> SubscriptionAppointment::all()
+                         ]
+                         ,201);
     }
 
     /**
@@ -47,7 +53,13 @@ class SubscriptionAppointmentController extends Controller
         $Subcription_appointment->coupon_flag = $request->coupon_flag;
         $Subcription_appointment->coupon_id = $request->coupon_id;
         $Subcription_appointment->save();
-        return $Subcription_appointment;
+       
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Subcription_appointment
+                         ]
+                         ,201);
     }
 
     /**
@@ -58,7 +70,12 @@ class SubscriptionAppointmentController extends Controller
      */
     public function show($id)
     {
-        return SubscriptionAppointment::find($id);
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> SubscriptionAppointment::find($id)
+                         ]
+                         ,201);
     }
 
     /**
@@ -83,7 +100,12 @@ class SubscriptionAppointmentController extends Controller
     {
         $SubscriptionAppointment = SubscriptionAppointment::find($id);
         $SubscriptionAppointment->update($request->all());
-        return $SubscriptionAppointment;
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> $SubscriptionAppointment
+                         ]
+                         ,201);
     }
 
     /**

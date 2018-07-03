@@ -57,7 +57,14 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        return Category::find($id);
+        return response(
+                         [
+                          'error'=> false,
+                          'data'=> Category::find($id)
+                         ]
+                         ,201);
+
+        
     }
 
     /**
@@ -82,7 +89,14 @@ class CategoryController extends Controller
     {
         $Category = Category::find($id);
          $Category->update($request->all());
-         return $Category;
+        
+
+         return response(
+                         [
+                          'error'=> false,
+                          'data'=> $Category
+                         ]
+                         ,201);
     }
 
     /**
